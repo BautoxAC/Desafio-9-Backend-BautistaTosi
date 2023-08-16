@@ -1,0 +1,22 @@
+<div>
+
+    <h1 class="userName" id="userName">Usuario:{{user}}</h1>
+    <form action="" class="newMessage">
+        <fieldset>
+            <label for="newMessage">Nuevo Mensaje:</label>
+            <input type="text" id="newMessage">
+            <input type="submit" id="buttonSumbit" class="buttonSumbit">
+        </fieldset>
+    </form>
+    <ul id="listMessages">
+        {{#each messages}}
+        <li class="boxMessage">
+            <p class="user">Usuario:{{this.user}}</p>
+            <p class="message">Mensaje:{{this.message}}</p>
+        </li>
+        {{/each}}
+    </ul>
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/chatSocket.js"></script>

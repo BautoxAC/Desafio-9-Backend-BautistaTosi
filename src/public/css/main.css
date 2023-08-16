@@ -1,0 +1,153 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+img {
+    height: 2rem;
+    width: 2rem;
+}
+
+form {
+    position: fixed;
+    right: 2rem;
+    top: 2rem;
+}
+
+#thumbnail {
+    display: block;
+    margin-top: 1rem;
+}
+
+.logIn {
+    position: static;
+    margin: auto;
+    width: 40%;
+    margin-top: 5rem;
+}
+
+.newMessage {
+    position: static;
+    top: 2rem;
+    left: 0;
+}
+
+.newMessage input {
+    width: 60%;
+    height: 6rem;
+    margin: 2rem;
+}
+
+#buttonSumbit {
+    width: 3rem;
+    height: 2rem;
+}
+
+.boxMessage {
+    list-style: none;
+    margin: 1rem;
+    border: 1px solid black;
+    padding: 1rem;
+    width: fit-content;
+}
+
+.logInBox {
+    margin: auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 15rem;
+}
+
+.logInBox button {
+    padding: .2rem;
+}
+
+/* vista de /products */
+.product {
+    display: flex;
+    flex-direction: column;
+    margin: 2rem;
+    align-items: center;
+    text-align: center;
+    gap: .5rem;
+}
+
+.product img {
+    object-fit: contain;
+    height: 4rem;
+}
+
+.product picture {
+    height: 4rem;
+}
+
+.productContainer {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.paginationLinks {
+    display: flex;
+    justify-content: center;
+    gap: .3rem;
+    margin-bottom: 2rem;
+}
+
+.paginationLinks a {
+    font-size: 1.5rem;
+    margin: 1rem;
+}
+
+.detailsLink {
+    text-decoration: none;
+    color: black;
+}
+
+.CartAgregate {
+    position: absolute;
+    top: 1.5rem;
+    right: 2rem;
+    background: none;
+    border: none;
+    background: lightblue;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+.linkDetailContainer {
+    position: relative;
+}
+.buttonAccount{
+    margin-left: 40%;
+    font-size: 1.5rem;
+}
+
+.carrito img{
+    height: 7rem;
+    width: 7rem;
+    object-fit: contain;
+    padding-top: 1rem;
+    position: absolute;
+    left: 50%;
+    top: 0;
+}
+.perfil img{
+    height: 4rem;
+    width: 4rem;
+    object-fit: contain;
+    position: absolute;
+    left: 10%;
+    top: 0;
+}
+.chat img{
+    left: 25%;
+}
+/* vista /carts/:cid */
+.total{
+    width: 100%;
+    margin: .2rem;
+    text-align: center;
+    font-size: 1.5rem;
+}

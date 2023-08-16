@@ -1,0 +1,21 @@
+<main>
+    <h1>LISTADO DE PRODUCTOS GUARDADOS EN EL CARRITO:</h1>
+    <ol class="productContainer">
+        {{#each cart}}
+        <div class="linkDetailContainer">
+            <li class="product" id="{{this.idProduct._id}}">
+                <h2>{{this.idProduct.title}} </h2>
+                <picture>{{#each this.idProduct.thumbnails}}<img src='{{this}}'>{{/each}}</picture>
+                <p>Id: {{this.idProduct._id}}</p>
+                <p>Cantidad: {{this.quantity}}</p>
+                <p>Precio: {{this.idProduct.price}}$</p>
+            </li>
+        </div>
+        {{/each}}
+        <div class="total">
+            <p >Total {{total}}$</p>
+            <button id="buttonPurchase">Terminar compra</button>
+        </div>
+    </ol>
+</main>
+<script src="/js/cartView.js"></script>

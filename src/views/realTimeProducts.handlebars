@@ -1,0 +1,44 @@
+<div>
+    <h1>LISTADO DE PRODUCTOS:</h1>
+    <ol id="list">
+        {{#each products}}
+        <li>
+            <h2>Nombre: {{this.title}}</h2>
+            <p>Descripcion: {{this.description}}</p>
+            <p>Stock: {{this.stock}}</p>
+            <p>Precio: {{this.price}}</p>
+            <p>Codigo: {{this.code}}</p>
+            <p>Id: {{this._id}}</p>
+            <p>Img: {{#each this.thumbnails}}<img src="{{this}}">{{/each}}</p>
+            <button id="{{this._id}}"><img src="http://localhost:8080/assets/quitar.png" alt="Eliminar producto"
+                    title="Eliminar producto"></button>
+        </li>
+        {{/each}}
+    </ol>
+    <form action="/api/products" method="post" enctype="multipart/form-data">
+        <fieldset>
+            <h2>Nuevo Producto</h2>
+            <label for="title">Nombre:</label>
+            <input type="text" id="title" name="title">
+            <hr>
+            <label for="description">Descripicion:</label>
+            <input type="text" id="description" name="description">
+            <hr>
+            <label for="stock">Stock:</label>
+            <input type="number" id="stock" name="stock">
+            <hr>
+            <label for="price">Precio:</label>
+            <input type="number" id="price" name="price">
+            <hr>
+            <label for="code">Codigo:</label>
+            <input type="text" id="code" name="code">
+            <hr>
+            <label for="file">Imagen del producto:</label>
+            <input type="file" id="file" name="file">
+            <hr>
+            <input type="submit" id="buttonSumbit">
+        </fieldset>
+    </form>
+</div>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/indexSocket.js"></script>

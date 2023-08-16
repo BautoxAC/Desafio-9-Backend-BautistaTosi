@@ -1,0 +1,27 @@
+[
+  {
+    "productos": [],
+    "idCarrito": "216715b1-1c05-4bf5-ac82-487bbf80ebf1"
+  },
+  {
+    "productos": [],
+    "idCarrito": "1d6db719-adce-418f-8002-b7837b1f18ca"
+  },
+  {
+    "productos": [
+      {
+        "idProduct": "4d11339f-18cc-441e-95cc-7c5c1c2ad01b",
+        "quantity": 3
+      }
+    ],
+    "idCarrito": "30e59944-277a-4ec4-80de-f5f907d22d32"
+  },
+  {
+    "productos": [],
+    "idCarrito": "efbd6aa0-6c3d-4346-bb29-0a28cc4ee9bf"
+  },
+  {
+    "productos": [],
+    "idCarrito": "17d8ffd8-7684-45da-9f2d-360c3bd26cf9"
+  }
+]

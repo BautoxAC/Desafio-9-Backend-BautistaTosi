@@ -1,0 +1,8 @@
+<div id="detailContainer" class="product">
+    <h2>{{detailsProduct.title}} </h2>
+    <picture>{{#each detailsProduct.thumbnails}}<img src="{{this}}">{{/each}}</picture>
+    <p>Descripcion: {{detailsProduct.description}}</p>
+    <p>Stock: {{detailsProduct.stock}}</p>
+    <p>Precio: {{detailsProduct.price}}</p>
+    <p>Codigo: {{detailsProduct.code}}</p>
+</div>

@@ -1,0 +1,23 @@
+<form action='/auth/register' method='POST' class="logIn">
+  <fieldset>
+    <h2>Registrarse</h2>
+    <label for="firstName">Nombre del usuario</label>
+    <input type="text" id="firstName" name="firstName">
+    <hr>
+    <label for="lastName">Apellido del usuario</label>
+    <input type="text" id="lastName" name="lastName">
+    <hr>
+    <label for="age">Edad del usuario</label>
+    <input type="number" id="age" name="age">
+    <hr>
+    <label for="email">Email del usuario</label>
+    <input type="email" id="email" name="email">
+    <hr>
+    <label for="password">Contraseña</label>
+    <input type="password" id="password" name="password">
+    <hr>
+    <input type="submit" id="buttonSumbit">
+  </fieldset>
+</form>
+<a href='/auth/login' class="buttonAccount">ya tengo una cuenta!</a><br><br>
+<a href='/api/sessions/github' class="buttonAccount">Entrar con github</a>

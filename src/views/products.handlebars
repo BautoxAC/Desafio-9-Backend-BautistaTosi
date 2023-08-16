@@ -1,0 +1,51 @@
+<header>
+    <div>
+        <h1>Perfil</h1>
+        <br>
+        email: <p id="email">{{email}}</p>
+        <br>
+        Rol:
+        {{#if isAdmin}}Administrador{{else}}Usuario{{/if}}
+        <br>
+        <br >
+    </div>
+    <div>
+        <a href='/auth/administracion'>Ver datos super secretos</a>
+        <br>
+        <br>
+        <button><a href='/auth/logout'>Salir!</a></button>
+    </div>
+    <a href="/chat" title="ver el chat" class="perfil chat"><img src="chat.jpg" alt="ver el chat"></a>
+    <a href="/api/sessions/current" title="ver perfil" class="perfil"><img src="perfil.png" alt="Ver perfil"></a>
+    <a href="{{urlCart}}" class="carrito" title="ver carrito"><img src="carrito.png" alt="Ver Carrito"></a>
+</header>
+<main>
+    <h1>LISTADO DE PRODUCTOS:</h1>
+    <ol class="productContainer">
+        {{#each payload}}
+        <div class="linkDetailContainer">
+            <a href="/products/{{this._id}}" class="detailsLink" id="linkDetail{{this._id}}">
+                <li class="product" id="{{this._id}}">
+                    <h2>{{this.title}} </h2>
+                    <picture>{{#each this.thumbnails}}<img src="{{this}}">{{/each}}</picture>
+                    <p>Id: {{this._id}}</p>
+
+                </li>
+            </a>
+            <button id="agregateOne{{this._id}}" class="CartAgregate"><img src="/AgregaUno.png"
+                    alt="Agrega uno al carrito" title="Agrega uno al carrito"></button>
+        </div>
+        {{/each}}
+    </ol>
+</main>
+<footer class="paginationLinks" id="{{page}}">
+    {{#if hasPrevPage}}
+    <a href="{{prevLink}}">⬅️{{prevPage}}</a>
+    {{/if}}
+    <a href="#">{{page}}</a>
+    {{#if hasNextPage}}
+    <a href="{{nextLink}}">{{nextPage}}➡️</a>
+    {{/if}}
+</footer>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/productView.js"></script>

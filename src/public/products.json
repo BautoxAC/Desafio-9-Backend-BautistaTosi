@@ -1,0 +1,94 @@
+[
+  {
+    "title": "PantC",
+    "id": "7985b3d6-4d95-42ee-ac86-60ba7bf55f12",
+    "code": "pantalones3",
+    "stock": 14,
+    "price": 45,
+    "category":"pantalones",
+    "thumbnails": [],
+    "description": "foto de pantalon de color azul",
+    "status": true
+  },
+  {
+    "category":"remeras",
+    "title": "DarkC",
+    "id": "9196dc1a-f42c-4e43-ba77-20a1f7089e6e",
+    "code": "remer4as",
+    "stock": 20,
+    "price": 20,
+    "thumbnails": [],
+    "description": "foto de remera celeste oscuro",
+    "status": true
+  },
+  {
+    "category":"accesorios",
+    "title": "Celestyn",
+    "id": "3ba2dace-90fe-4daf-b897-4bbd1acc2993",
+    "code": "acceso5rios",
+    "stock": 3,
+    "price": 20,
+    "thumbnails": [],
+    "description": "foto de brazalete de un color celeste",
+    "status": true
+  },
+  {
+    "title": "Celest",
+    "category":"vestidos",
+    "id": "16548364-44e1-420d-bd5a-fce36e6890ff",
+    "code": "vestid76os",
+    "stock": 11,
+    "price": 50,
+    "thumbnails": [
+      "http://localhost:8080/assets/Celest.png"
+    ],
+    "description": "foto de un vestido celeste",
+    "status": true
+  },
+  {
+    "title": "LightE",
+    "id": "ca3e9e64-f5b7-46b7-9a9b-e0c7f14d749e",
+    "code": "remer768976as",
+    "stock": 16,
+    "category":"remeras",
+    "price": 15,
+    "thumbnails": [],
+    "description": "foto de remera con estampado pequeño y color celeste con raya blanca",
+    "status": true
+  },
+  {
+    "category":"vestidos",
+    "title": "LightB",
+    "id": "db51d827-3f80-4182-a818-f1a34a5f55a6",
+    "code": "vesti67dos",
+    "stock": 6,
+    "price": 50,
+    "thumbnails": [],
+    "description": "foto de vestido LightB color azul",
+    "status": true
+  },
+  {
+    "title": "LightE2",
+    "category":"remeras",
+    "id": "d85e1426-cea9-43a0-a4b0-2e20e9967a41",
+    "code": "rem67eras",
+    "stock": 7,
+    "price": 20,
+    "thumbnails": [],
+    "description": "foto de remera de color azul llamada lightE2",
+    "status": true
+  },
+  {
+    "title": "sdffsd",
+    "description": "sdf",
+    "price": 234,
+    "thumbnails": [
+      "http://localhost:8080/Captura de pantalla (10).png"
+    ],
+    "code": "efdf34e",
+    "stock": 23,
+    "id": "13d6cda3-6a6d-4e78-a8dc-2fcf9a04f9ef",
+    "status": true,
+    "category":"algo"
+  }
+]

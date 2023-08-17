@@ -1,5 +1,5 @@
 import { CartManagerDBDAO } from '../DAO/DB/cartManagerDB.dao.js'
-import { newMessage } from '../utils.js'
+import { newMessage } from '../utils/utils.js'
 import { CustomError } from './errors/custom-error.js'
 import { EErros } from './errors/enums.js'
 import { ProductManagerDBService } from './products.service.js'
@@ -21,7 +21,6 @@ export class CartManagerDBService {
         })
       }
     } catch (e) {
-      console.log(e)
       return newMessage('failure', 'A problem ocurred', e)
     }
   }
@@ -31,7 +30,6 @@ export class CartManagerDBService {
       const lastAdded = await CartManagerDAO.addCart()
       return newMessage('success', 'cart added successfully', lastAdded)
     } catch (e) {
-      console.log(e)
       return newMessage('failure', 'A problem ocurred', e)
     }
   }
@@ -63,7 +61,7 @@ export class CartManagerDBService {
         const positionProductRepeated = cart.products.indexOf(productRepeated)
         if (cart.products[positionProductRepeated].quantity < product.stock) {
           cart.products[positionProductRepeated].quantity++
-          messageReturn = newMessage('success', 'Product repeated: quantity added correctly', cart)
+          messageReturn = newMessage('warn', 'Product repeated: quantity added correctly', cart)
         } else {
           CustomError.createError({
             name: 'Agregating product to cart error',
@@ -79,7 +77,6 @@ export class CartManagerDBService {
       await CartManagerDAO.addProduct(cart)
       return messageReturn
     } catch (e) {
-      console.log(e)
       return newMessage('failure', 'A problem ocurred', e)
     }
   }
@@ -93,7 +90,6 @@ export class CartManagerDBService {
       await CartManagerDAO.deleteProduct(cartFindId)
       return newMessage('success', 'product deleted', cartFindId)
     } catch (e) {
-      console.log(e)
       return newMessage('failure', 'A problem ocurred', e)
     }
   }
@@ -133,7 +129,6 @@ export class CartManagerDBService {
       await CartManagerDAO.addNewProducts(cartFindId)
       return newMessage('success', 'products updated', cartFindId)
     } catch (e) {
-      console.log(e)
       return newMessage('failure', 'A problem ocurred', e)
     }
   }
@@ -145,7 +140,6 @@ export class CartManagerDBService {
       await CartManagerDAO.deleteAllProducts(cartFindId)
       return newMessage('success', 'products emptied', cartFindId)
     } catch (e) {
-      console.log(e)
       return newMessage('failure', 'A problem ocurred', '')
     }
   }
@@ -176,7 +170,6 @@ export class CartManagerDBService {
       await CartManagerDAO.updateQuantityProduct(cartFindId)
       return newMessage('success', 'the quantity of product was updated', cartFindId)
     } catch (e) {
-      console.log(e)
       return newMessage('failure', 'A problem ocurred', e)
     }
   }
@@ -203,7 +196,6 @@ export class CartManagerDBService {
       }
       return newMessage('success', 'the ticket of the product was created', { ticket, productsCouldNotBuy })
     } catch (e) {
-      console.log(e)
       return newMessage('failure', 'A problem ocurred', e)
     }
   }

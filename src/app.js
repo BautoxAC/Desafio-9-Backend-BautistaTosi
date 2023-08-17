@@ -6,13 +6,14 @@ import session from 'express-session'
 import path from 'path'
 import passport from 'passport'
 import { errorHandler } from './middlewares/error.js'
+import { loggerTestRouter } from './routes/loggerTest.router.js'
 import { mockingProducts } from './routes/mockingProducts.router.js'
 import { cartsAPIRouter } from './routes/cartsAPI.router.js'
 import { productViewRouter } from './routes/productsView.router.js'
 import { productsAPIRouter } from './routes/productsAPI.router.js'
 import { productsSocketRouter } from './routes/productsSocketRouter.router.js'
 import { authRouter } from './routes/auth.router.js'
-import { __dirname, connectMongo, connectSocketServer } from './utils.js'
+import { __dirname, connectMongo, connectSocketServer } from './utils/utils.js'
 import { iniPassPortLocalAndGithub } from './config/passport.config.js'
 import { cartViewRouter } from './routes/cartView.router.js'
 import { chatRouter } from './routes/chat.router.js'
@@ -58,6 +59,7 @@ connectMongo()
 app.use('/api/products', productsAPIRouter)
 app.use('/api/carts', cartsAPIRouter)
 app.use('/api/sessions', sessionsRouter)
+app.use('/loggerTest', loggerTestRouter)
 
 // Rutes: HTML/HandleBars
 app.use('/mockingproducts', mockingProducts)

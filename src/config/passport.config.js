@@ -2,7 +2,7 @@ import { userModel } from '../DAO/models/users.model.js'
 import GitHubStrategy from 'passport-github2'
 import passport from 'passport'
 import local from 'passport-local'
-import { createHash, isValidPassword } from '../utils.js'
+import { newMessage, createHash, isValidPassword } from '../utils/utils.js'
 import { CartManagerDBService } from '../services/carts.service.js'
 import config from './env.config.js'
 import { EErros } from '../services/errors/enums.js'
@@ -35,9 +35,15 @@ export function iniPassPortLocalAndGithub () {
           })
           return done(null, false)
         }
-
+        newMessage('success', 'success in logging with passport(the user alredy exists)', {})
         return done(null, user)
       } catch (err) {
+        CustomError.createError({
+          name: 'Logging a user Error',
+          cause: 'error in logging with passport local',
+          message: 'Error to log a user',
+          code: EErros.DATABASES_ERROR
+        })
         return done(err)
       }
     })
@@ -75,9 +81,15 @@ export function iniPassPortLocalAndGithub () {
             cart: newCart.data._id
           }
           const userCreated = await userModel.create(newUser)
+          newMessage('success', 'success in registering with passport', {})
           return done(null, userCreated)
         } catch (e) {
-          console.log(e)
+          CustomError.createError({
+            name: 'Registering a user Error',
+            cause: 'error in registering with passport local',
+            message: 'Error to register a user',
+            code: EErros.DATABASES_ERROR
+          })
           return done(e)
         }
       }
@@ -130,9 +142,14 @@ export function iniPassPortLocalAndGithub () {
           } else {
             return done(null, user)
           }
+          newMessage('success', 'user logged succesfully with passport github', {})
         } catch (e) {
-          console.log('Error en auth github')
-          console.log(e)
+          CustomError.createError({
+            name: 'Logging a user Error',
+            cause: 'error in logging with passport github',
+            message: 'Error to log a user',
+            code: EErros.DATABASES_ERROR
+          })
           return done(e)
         }
       }

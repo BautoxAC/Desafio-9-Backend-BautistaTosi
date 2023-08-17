@@ -1,4 +1,4 @@
-import { newMessage } from '../utils.js'
+import { newMessage } from '../utils/utils.js'
 export function isUser (req, res, next) {
   if (req.session?.user?.email) {
     return next()
@@ -38,7 +38,6 @@ export async function isYourCart (req, res, next) {
       return res.status(403).render('error', { error: 'error de autorización! Este no es tu carrito' })
     }
   } catch (e) {
-    console.log(e)
     return newMessage('failure', 'Failed to identify if this cart is yours', e)
   }
 }

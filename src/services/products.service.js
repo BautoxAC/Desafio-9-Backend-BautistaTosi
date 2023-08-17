@@ -1,5 +1,5 @@
 import { ProductManagerDBDAO } from '../DAO/DB/productManagerDB.dao.js'
-import { newMessage } from '../utils.js'
+import { newMessage } from '../utils/utils.js'
 import { CustomError } from './errors/custom-error.js'
 import { EErros } from './errors/enums.js'
 const ProductManagerDAO = new ProductManagerDBDAO()
@@ -17,7 +17,6 @@ export class ProductManagerDBService {
       }
       const products = await this.getProducts()
       const codeVerificator = products.payload.some((productToFind) => productToFind.code === code)
-      console.log(codeVerificator, product)
       if (codeVerificator) {
         CustomError.createError({
           name: 'Product creation error',
@@ -37,7 +36,6 @@ export class ProductManagerDBService {
         return newMessage('success', 'Product added successfully', lastAdded)
       }
     } catch (e) {
-      console.log(e)
       return newMessage('failure', 'A problem ocurred', e)
     }
   }
@@ -66,22 +64,25 @@ export class ProductManagerDBService {
         const prop = propToUpdateFound[i]
         const sameTypeAndKey = dataTypes.find((type) => type.type === prop.type && type.key === prop.entries.key)
         const sameKey = dataTypes.find(type => type.key === prop.entries.key)
+        let status = ''
         if (prop.status && sameTypeAndKey) {
           if (prop.entries.key === 'thumbnails') {
             const thumbnailRepeated = productToUpdate.thumbnails.some(thumbnail => thumbnail === prop.entries.value)
             thumbnailRepeated ? messages.push(` The prop Number: ${i + 1} (${prop.entries.key}) has a value repeated`) : productToUpdate.thumbnails.push(prop.entries.value)
+            status = 'warn'
           } else {
             productToUpdate[prop.entries.key] = prop.entries.value
+            status = 'success'
           }
         } else {
+          status = 'warn'
           messages.push(` The prop Number: ${i + 1} (${prop.entries.key}) was provided incorrectly`)
           prop.status ? messages.push(`Must be ${sameKey?.type}`) : messages.push('The prop must be title, description, price, thumbnails, code or stock')
         }
       }
       await ProductManagerDAO.updateProduct(productToUpdate)
-      return newMessage('success', 'Updated successfully' + (messages).toString(), productToUpdate)
+      return newMessage(status, 'Updated successfully' + (messages).toString(), productToUpdate)
     } catch (e) {
-      console.log(e)
       return newMessage('failure', 'A problem ocurred', e)
     }
   }
@@ -98,9 +99,10 @@ export class ProductManagerDBService {
     }
     try {
       const { docs, rest } = await ProductManagerDAO.getProducts(limit, page, query, sort)
+      newMessage('success', 'the products were found correctly', {})
       return res('success', docs, rest)
     } catch (e) {
-      console.log(e)
+      newMessage('failure', 'the products were not found', {})
       return res(e, {}, {})
     }
   }
@@ -119,7 +121,6 @@ export class ProductManagerDBService {
         })
       }
     } catch (e) {
-      console.log(e)
       return newMessage('failure', 'A problem ocurred', e)
     }
   }
@@ -129,7 +130,6 @@ export class ProductManagerDBService {
       const productToDelete = await ProductManagerDAO.deleteProduct(id)
       return newMessage('success', 'Deleted successfully', productToDelete)
     } catch (e) {
-      console.log(e)
       return newMessage('failure', 'A problem ocurred', e)
     }
   }

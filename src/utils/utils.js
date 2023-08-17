@@ -1,10 +1,11 @@
 import multer from 'multer'
 import { Server } from 'socket.io'
-import { ChatManagerDBService } from './services/chat.service.js'
-import { CartManagerDBService } from './services/carts.service.js'
-import { ProductManagerDBService } from './services/products.service.js'
-import { UserManagerDBService } from './services/user.service.js'
-import config from './config/env.config.js'
+import { logger } from './logger.js'
+import { ChatManagerDBService } from '../services/chat.service.js'
+import { CartManagerDBService } from '../services/carts.service.js'
+import { ProductManagerDBService } from '../services/products.service.js'
+import { UserManagerDBService } from '../services/user.service.js'
+import config from '../config/env.config.js'
 // ----------------DIRNAME------------
 import path from 'path'
 import { fileURLToPath } from 'url'
@@ -25,11 +26,25 @@ const storage = multer.diskStorage({
 export const uploader = multer({ storage })
 // ----------------DIRNAME------------
 export const __filename = fileURLToPath(import.meta.url)
-export const __dirname = path.dirname(__filename)
-
+export const __dirname = path.dirname(path.dirname(__filename))
 // -------------Mensaje de status---------------------------
 export function newMessage (status, message, data) {
-  return { status, message, data }
+  const messageObject = { status, message, data }
+  switch (status) {
+    case 'success':
+      logger.info(messageObject)
+      break
+    case 'warning':
+      logger.warn(messageObject)
+      break
+    case 'failure':
+      logger.error(messageObject)
+      break
+    default:
+      logger.info('this message has no status (check it)')
+      break
+  }
+  return messageObject
 }
 
 // --------------Socket Server---------------------------
@@ -48,7 +63,6 @@ export function connectSocketServer (httpServer) {
         const messages = await MessageManager.getMessages()
         socket.emit('message_created_back_to_front', newMessage(true, 'message created', messages))
       } catch (e) {
-        console.log(e)
         socket.emit('message_created_back_to_front', newMessage(false, 'an error ocurred', ''))
       }
     })
@@ -58,7 +72,6 @@ export function connectSocketServer (httpServer) {
         const category = 'remera'
         socket.emit('newProduct_to_front', await list.addProduct(title, description, price, thumbnails, code, stock, category), await list.getProducts())
       } catch (e) {
-        console.log(e)
         socket.emit('newProduct_to_front', { status: 'failure', message: 'something went wrong :(', data: {} })
       }
     })
@@ -74,7 +87,7 @@ export function connectSocketServer (httpServer) {
         const { status } = await CartManager.addProduct(user.data.cart, idProduct)
         socket.emit('add_product_to_cart_back_to_front', { status, cartId: user.data.cart })
       } catch (e) {
-        console.log(e)
+
       }
     })
   })
@@ -85,7 +98,6 @@ export async function connectMongo () {
   try {
     await connect(`${mongoUrl}`)
   } catch (e) {
-    console.log(e)
     throw new Error('can not connect to the db')
   }
 }

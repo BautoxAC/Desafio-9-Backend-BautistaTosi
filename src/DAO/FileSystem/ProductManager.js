@@ -1,5 +1,5 @@
 import fs from 'fs'
-import { newMessage } from '../../utils.js'
+import { newMessage } from '../../utils/utils.js'
 import { v4 as uuidv4 } from 'uuid'
 
 export class ProductManager {

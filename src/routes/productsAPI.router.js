@@ -1,5 +1,5 @@
 import express from 'express'
-import { uploader } from '../utils.js'
+import { uploader } from '../utils/utils.js'
 import { ProductsAPIController } from '../controller/productAPI.controller.js'
 import { isAdmin } from '../middlewares/auth.js'
 const ProductsAPIControllerRouting = new ProductsAPIController()

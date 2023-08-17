@@ -3,7 +3,7 @@ import { ticketModel } from '../models/ticket.model.js'
 import { v4 as uuidv4 } from 'uuid'
 import { EErros } from '../../services/errors/enums.js'
 import { CustomError } from '../../services/errors/custom-error.js'
-import { formattedDate } from '../../utils.js'
+import { formattedDate } from '../../utils/utils.js'
 export class CartManagerDBDAO {
   async getCartById (id) {
     try {

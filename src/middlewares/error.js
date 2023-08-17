@@ -1,8 +1,7 @@
 import { EErros } from '../services/errors/enums.js'
-
+import { newMessage } from '../utils/utils.js'
 export function errorHandler (error, req, res, next) {
-  console.log(error.cause)
-  /* hacer los casos */
+  newMessage('failure', error.cause, error.message)
   switch (error.code) {
     case EErros.INVALID_TYPES_ERROR:
       res

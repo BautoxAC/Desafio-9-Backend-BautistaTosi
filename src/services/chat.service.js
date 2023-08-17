@@ -1,4 +1,4 @@
-import { newMessage } from '../utils.js'
+import { newMessage } from '../utils/utils.js'
 import { ChatManagerDBDAO } from '../DAO/DB/chatManagerDB.dao.js'
 import { UserManagerDBDAO } from '../DAO/DB/userManagerDB.dao.js'
 import { CustomError } from './errors/custom-error.js'
@@ -22,7 +22,6 @@ export class ChatManagerDBService {
         return newMessage('failure', 'The user was not foud', '')
       }
     } catch (e) {
-      console.log(e)
       return newMessage('failure', 'an error ocurred', e)
     }
   }
@@ -32,7 +31,6 @@ export class ChatManagerDBService {
       const messages = await ChatManagerDB.getMessages()
       return newMessage('success', 'Messages got', messages)
     } catch (e) {
-      console.log(e)
       return newMessage('failure', 'Messages not found', e)
     }
   }

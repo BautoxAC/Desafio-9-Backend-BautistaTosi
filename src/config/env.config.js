@@ -13,5 +13,6 @@ export default {
   sessionSecret: process.env.SESSION_SECRET,
   clientID: process.env.CLIENT_ID,
   clientSecret: process.env.CLIENT_SECRET,
-  port: process.env.PORT
+  port: process.env.PORT,
+  logWinston: process.env.LOG_WINSTON
 }

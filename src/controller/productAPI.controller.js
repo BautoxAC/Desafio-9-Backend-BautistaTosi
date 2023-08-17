@@ -1,5 +1,5 @@
 import { ProductManagerDBService } from '../services/products.service.js'
-import { newMessage } from '../utils.js'
+import { newMessage } from '../utils/utils.js'
 import config from './../config/env.config.js'
 const { port } = config
 const list = new ProductManagerDBService()

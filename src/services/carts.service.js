@@ -61,7 +61,7 @@ export class CartManagerDBService {
         const positionProductRepeated = cart.products.indexOf(productRepeated)
         if (cart.products[positionProductRepeated].quantity < product.stock) {
           cart.products[positionProductRepeated].quantity++
-          messageReturn = newMessage('warn', 'Product repeated: quantity added correctly', cart)
+          messageReturn = newMessage('warning', 'Product repeated: quantity added correctly', cart)
         } else {
           CustomError.createError({
             name: 'Agregating product to cart error',

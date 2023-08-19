@@ -69,13 +69,13 @@ export class ProductManagerDBService {
           if (prop.entries.key === 'thumbnails') {
             const thumbnailRepeated = productToUpdate.thumbnails.some(thumbnail => thumbnail === prop.entries.value)
             thumbnailRepeated ? messages.push(` The prop Number: ${i + 1} (${prop.entries.key}) has a value repeated`) : productToUpdate.thumbnails.push(prop.entries.value)
-            status = 'warn'
+            status = 'warning'
           } else {
             productToUpdate[prop.entries.key] = prop.entries.value
             status = 'success'
           }
         } else {
-          status = 'warn'
+          status = 'warning'
           messages.push(` The prop Number: ${i + 1} (${prop.entries.key}) was provided incorrectly`)
           prop.status ? messages.push(`Must be ${sameKey?.type}`) : messages.push('The prop must be title, description, price, thumbnails, code or stock')
         }

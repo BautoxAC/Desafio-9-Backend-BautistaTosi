@@ -6,14 +6,13 @@ import { CartManagerDBService } from '../services/carts.service.js'
 import { ProductManagerDBService } from '../services/products.service.js'
 import { UserManagerDBService } from '../services/user.service.js'
 import config from '../config/env.config.js'
-// ----------------DIRNAME------------
-import path from 'path'
-import { fileURLToPath } from 'url'
+import { __dirname } from './__dirname.js'
 // -------------MONGO------------------
 import { connect } from 'mongoose'
 
 // ----------------- BCRYPT ---------------------
 import bcrypt from 'bcrypt'
+
 // ------------MULTER------------------
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -24,9 +23,6 @@ const storage = multer.diskStorage({
   }
 })
 export const uploader = multer({ storage })
-// ----------------DIRNAME------------
-export const __filename = fileURLToPath(import.meta.url)
-export const __dirname = path.dirname(path.dirname(__filename))
 // -------------Mensaje de status---------------------------
 export function newMessage (status, message, data) {
   const messageObject = { status, message, data }
@@ -87,7 +83,7 @@ export function connectSocketServer (httpServer) {
         const { status } = await CartManager.addProduct(user.data.cart, idProduct)
         socket.emit('add_product_to_cart_back_to_front', { status, cartId: user.data.cart })
       } catch (e) {
-
+        socket.emit('add_product_to_cart_back_to_front', { status: 'failure', message: 'something went wrong :(', data: {} })
       }
     })
   })

@@ -1,6 +1,6 @@
 import winston from 'winston'
 import config from '../config/env.config.js'
-import { __dirname } from './utils.js'
+import { __dirname } from './__dirname.js'
 const { logWinston } = config
 const loggerType = () => {
   if (logWinston === 'development') {

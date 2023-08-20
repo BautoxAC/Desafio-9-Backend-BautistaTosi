@@ -13,12 +13,14 @@ import { productViewRouter } from './routes/productsView.router.js'
 import { productsAPIRouter } from './routes/productsAPI.router.js'
 import { productsSocketRouter } from './routes/productsSocketRouter.router.js'
 import { authRouter } from './routes/auth.router.js'
-import { __dirname, connectMongo, connectSocketServer } from './utils/utils.js'
+import { __dirname } from './utils/__dirname.js'
+import { connectMongo, connectSocketServer } from './utils/utils.js'
 import { iniPassPortLocalAndGithub } from './config/passport.config.js'
 import { cartViewRouter } from './routes/cartView.router.js'
 import { chatRouter } from './routes/chat.router.js'
 import { sessionsRouter } from './routes/sessions.router.js'
 import compression from 'express-compression'
+
 const { sessionSecret, port, mongoUrl } = config
 const app = express()
 const httpServer = app.listen(port, () => {
